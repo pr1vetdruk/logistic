@@ -8,10 +8,20 @@ define(function () {
             webix.extend(this, webix.proxy.rest);
         },
         load: function (view, params) {
+            let args = '';
+
+            args += '?page=' + (params ? params.start / view.config.datafetch : 0);
+            args += '&size=' + view.config.datafetch;
+
             let url = view.config.url.source; // url api
 
-            return ajax.get(url).then(function (value) {
-                return value.json().content;
+            return ajax.get(url + args).then(function (value) {
+                let response = value.json();
+                return {
+                    data: response.content,
+                    pos: response.number * view.config.datafetch,
+                    total_count: response.totalElements
+                };
             });
         },
         save: function (view, params) {
