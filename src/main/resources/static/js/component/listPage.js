@@ -9,9 +9,9 @@ define(function () {
                             view: 'button',
                             label: 'Add',
                             click: function () {
-                                let list = $$(tableId);
-                                let id = list.add({});
-                                list.editRow(id);
+                                let list = $$(tableId)
+                                let id = list.add({})
+                                list.editRow(id)
                             }
                         }
                     ]
@@ -33,9 +33,9 @@ define(function () {
                     id: 'listPager',
                     size: 3,
                     group: 3,
-                    template: "{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}"
+                    template: '{common.first()}{common.prev()}{common.pages()}{common.next()}{common.last()}'
                 }
             ]
-        };
-    };
-});
+        }
+    }
+})

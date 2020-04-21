@@ -1,23 +1,23 @@
 define(function () {
     return {
-        type: "line",
+        type: 'line',
         height: 400,
         rows: [
             {
                 view: 'button',
                 label: 'Cars',
                 click: function () {
-                    routie('cars');
+                    routie('cars')
                 }
             },
-            {template: "Hi there!"},
-            {template: "You're doing great!"},
+            {template: 'Hi there!'},
+            {template: 'Youre doing great!'},
             {
                 cols: [
-                    {template: "col 1"},
-                    {template: "col 2"}
+                    {template: 'col 1'},
+                    {template: 'col 2'}
                 ]
             }
         ]
-    };
-});
+    }
+})
