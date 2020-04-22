@@ -24,34 +24,40 @@ function buildButton(label, route) {
 }
 
 require(
-    ['views/main', 'views/cars', 'views/models', 'views/marks', 'util/resourceProxy'],
+    [
+        'views/main',
+        'views/car/carList',
+        'views/model/modelList',
+        'views/mark/markList',
+        'util/resourceProxy'
+    ],
     function (main, cars, models, marks, resourceProxy) {
-    webix.ready(function () {
-        webix.ui({
-            container: "app",
-            width: document.body.clientWidth,
-            height: document.body.clientHeight,
-            rows: [
-                {
-                    view: 'toolbar',
-                    cols: [
-                        buildButton('Home', ''),
-                        buildButton('Marks', 'marks'),
-                        buildButton('Models', 'models'),
-                        buildButton('Cars', 'cars')
-                    ]
-                },
-                {
-                    id: 'root',
-                }
-            ],
+        webix.ready(function () {
+            webix.ui({
+                container: "app",
+                width: document.body.clientWidth,
+                height: document.body.clientHeight,
+                rows: [
+                    {
+                        view: 'toolbar',
+                        cols: [
+                            buildButton('Home', ''),
+                            buildButton('Marks', 'marks'),
+                            buildButton('Models', 'models'),
+                            buildButton('Cars', 'cars')
+                        ]
+                    },
+                    {
+                        id: 'root',
+                    }
+                ],
+            });
+        });
+
+        routie({
+            '': buildRoute(main),
+            'cars': buildRoute(cars),
+            'models': buildRoute(models),
+            'marks': buildRoute(marks)
         });
     });
-
-    routie({
-        '': buildRoute(main),
-        'cars': buildRoute(cars),
-        'models': buildRoute(models),
-        'marks': buildRoute(marks)
-    });
-});
